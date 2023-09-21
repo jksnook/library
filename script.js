@@ -1,9 +1,10 @@
-const myLibrary = [{title: 'book1', author: 'author1', pages:10}, {title: 'book2', author: 'author1', pages:10}, {title: 'book3', author: 'author1', pages:10}];
+const myLibrary = [{title: 'book1', author: 'author1', pages:10, read: false}];
 
-function Book(title, author, pages) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = read;
 }
 
 function addBook(...books) {
@@ -22,21 +23,35 @@ function displayBooks(library) {
       tableSection.textContent = book[key];
       row.appendChild(tableSection);
     }
+
     const deleteButton = document.createElement('button');
-    const buttonSection = document.createElement('td');
+    const deleteButtonSection = document.createElement('td');
     deleteButton.type = 'button';
-    deleteButton.dataset.index = i;
     deleteButton.textContent = 'delete book';
     deleteButton.addEventListener('click', () => {
-      library.splice(deleteButton.dataset.index, 1);
+      library.splice(i, 1);
       displayBooks(library);
     })
 
-    buttonSection.appendChild(deleteButton);
-    row.appendChild(buttonSection);
+    deleteButtonSection.appendChild(deleteButton);
+    row.appendChild(deleteButtonSection);
+
+    const readButton = document.createElement('button');
+    const readButtonSection = document.createElement('td');
+    readButton.type = 'button';
+    readButton.textContent = 'read book';
+    readButton.addEventListener('click', () => {
+      library[i].read = !library[i].read;
+      displayBooks(library);
+    })
+
+    readButtonSection.appendChild(readButton);
+    row.appendChild(readButtonSection);
     bookshelf.appendChild(row);
   }
 }
+
+displayBooks(myLibrary);
 
 const bookButton = document.querySelector('#addBook');
 const bookForm = document.querySelector('form')
@@ -51,8 +66,9 @@ submit.addEventListener('click', () => {
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
+  const read = document.querySelector('#read').checked;
   
-  let newBook = new Book(title, author, pages);
+  let newBook = new Book(title, author, pages, read);
   addBook(newBook);
   displayBooks(myLibrary);
   bookForm.classList.toggle('hidden');
