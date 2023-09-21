@@ -31,3 +31,16 @@ const bookForm = document.querySelector('form')
 bookButton.addEventListener('click', () => {
   bookForm.classList.toggle('hidden');
 });
+
+const submit = document.querySelector('#submitButton');
+
+submit.addEventListener('click', () => {
+  const title = document.querySelector('#title').value;
+  const author = document.querySelector('#author').value;
+  const pages = document.querySelector('#pages').value;
+  
+  let newBook = new Book(title, author, pages);
+  addBook(newBook);
+  displayBooks(myLibrary);
+  bookForm.classList.toggle('hidden');
+})
