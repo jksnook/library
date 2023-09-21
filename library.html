@@ -9,8 +9,41 @@
 </head>
 <body>
   <table>
+    <thead>
+      <th>Title</th>
+      <th>Author</th>
+      <th>Page Count</th>
+    </thead>
     <tbody>
     </tbody>
   </table>
+  <button type="button" id="addBook">New Book</button>
+  <form action="" class="hidden">
+    <div class="form-body">
+      <ul class = labels>
+        <li>
+          <label for="title">Title</label>
+        </li>
+        <li>
+          <label for="author">Author</label>
+        </li>
+        <li>
+          <label for="pages">Number of pages</label>
+        </li>
+      </ul>
+      <ul class = inputs>
+        <li>
+          <input type="text" name="title" id="title">
+        </li>
+        <li>
+          <input type="text" name="author" id="author">
+        </li>
+        <li>
+          <input type="number" name="pages" id="pages">
+        </li>
+      </ul>
+    </div>
+    <button type="button">Add Book</button>
+  </form>
 </body>
 </html>

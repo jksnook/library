@@ -1,0 +1,45 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+table {
+  border-collapse: collapse;
+  font-size: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+  margin: 15px;
+}
+
+form ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+div.form-body {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.hidden {
+  visibility: hidden;
+}

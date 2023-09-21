@@ -24,3 +24,10 @@ function displayBooks(library) {
     bookshelf.appendChild(row);
   }
 }
+
+const bookButton = document.querySelector('#addBook');
+const bookForm = document.querySelector('form')
+
+bookButton.addEventListener('click', () => {
+  bookForm.classList.toggle('hidden');
+});
