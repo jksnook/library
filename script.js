@@ -14,13 +14,26 @@ function displayBooks(library) {
   const bookshelf = document.querySelector('table tbody');
   bookshelf.innerHTML = '';
 
-  for  (const book of library) {
+  for  (let i = 0; i < library.length; i++) {
+    const book = library[i];
     const row = document.createElement('tr');
     for (key in book) {
       const tableSection = document.createElement('td');
       tableSection.textContent = book[key];
       row.appendChild(tableSection);
     }
+    const deleteButton = document.createElement('button');
+    const buttonSection = document.createElement('td');
+    deleteButton.type = 'button';
+    deleteButton.dataset.index = i;
+    deleteButton.textContent = 'delete book';
+    deleteButton.addEventListener('click', () => {
+      library.splice(deleteButton.dataset.index, 1);
+      displayBooks(library);
+    })
+
+    buttonSection.appendChild(deleteButton);
+    row.appendChild(buttonSection);
     bookshelf.appendChild(row);
   }
 }
