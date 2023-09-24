@@ -1,10 +1,12 @@
 const myLibrary = [{title: 'book1', author: 'author1', pages:10, read: false}];
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 function addBook(...books) {
@@ -15,7 +17,7 @@ function displayBooks(library) {
   const bookshelf = document.querySelector('table tbody');
   bookshelf.innerHTML = '';
 
-  for  (let i = 0; i < library.length; i++) {
+  for (let i = 0; i < library.length; i++) {
     const book = library[i];
     const row = document.createElement('tr');
     for (key in book) {
@@ -31,7 +33,7 @@ function displayBooks(library) {
     deleteButton.addEventListener('click', () => {
       library.splice(i, 1);
       displayBooks(library);
-    })
+    });
 
     deleteButtonSection.appendChild(deleteButton);
     row.appendChild(deleteButtonSection);
@@ -43,7 +45,7 @@ function displayBooks(library) {
     readButton.addEventListener('click', () => {
       library[i].read = !library[i].read;
       displayBooks(library);
-    })
+    });
 
     readButtonSection.appendChild(readButton);
     row.appendChild(readButtonSection);
@@ -54,7 +56,7 @@ function displayBooks(library) {
 displayBooks(myLibrary);
 
 const bookButton = document.querySelector('#addBook');
-const bookForm = document.querySelector('form')
+const bookForm = document.querySelector('form');
 
 bookButton.addEventListener('click', () => {
   bookForm.classList.toggle('hidden');
