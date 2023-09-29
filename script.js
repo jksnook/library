@@ -64,7 +64,9 @@ bookButton.addEventListener('click', () => {
 
 const submit = document.querySelector('#submitButton');
 
-submit.addEventListener('click', () => {
+bookForm.addEventListener('submit', (event) => {
+  event.preventDefault();
+
   const title = document.querySelector('#title').value;
   const author = document.querySelector('#author').value;
   const pages = document.querySelector('#pages').value;
@@ -73,5 +75,6 @@ submit.addEventListener('click', () => {
   let newBook = new Book(title, author, pages, read);
   addBook(newBook);
   displayBooks(myLibrary);
+  bookForm.reset();
   bookForm.classList.toggle('hidden');
 })
